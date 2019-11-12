@@ -7,9 +7,12 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        void Start()
+        {
 
+        }
+    } 
+   
     // Update is called once per frame
     void Update()
     {
@@ -20,5 +23,17 @@ public class CameraController : MonoBehaviour
         {
             Camera.main.transform.Translate(new Vector3(xAxisValue, zAxisValue, 0.0f));
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.DrawLine(Camera.main.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition),Color.black,5f);
+            }
+        }
+        
     }
 }
