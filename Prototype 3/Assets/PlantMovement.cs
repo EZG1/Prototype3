@@ -10,7 +10,7 @@ public class PlantMovement : MonoBehaviour
 
     public Transform moveToLocation;
     public Transform target;
-
+    GameObject startLocation;
 
     /*public Transform CheckpointLocation;
 
@@ -23,6 +23,8 @@ public class PlantMovement : MonoBehaviour
 
     void Start()
     {
+        startLocation = GameObject.Find("CornerDirections1");
+        moveToLocation = startLocation.transform;
         setTagetPosition();
         navAgent = gameObject.GetComponent<NavMeshAgent>();
     }
@@ -42,12 +44,12 @@ public class PlantMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider Box)
     {
-        if (Box.tag == "checkpoint")
+        if (Box.tag == "Checkpoint")
         {
-           // moveToLocation = Find
-
-
-                setTagetPosition();
+            // moveToLocation = Find
+            print(Box.name);
+            moveToLocation = Box.GetComponent<CornerDirections>().NextLocation;
+            setTagetPosition();
         }
     }
 }

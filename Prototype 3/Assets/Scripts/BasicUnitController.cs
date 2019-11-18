@@ -8,7 +8,7 @@ public class BasicUnitController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int Health = 100;
+      //  int Health = 100;
 
     }
 
