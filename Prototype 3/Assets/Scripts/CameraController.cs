@@ -26,9 +26,11 @@ public class CameraController : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 1000f))
             {
-                Debug.DrawLine(Camera.main.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition),Color.black,5f);
+                Debug.DrawLine(Camera.main.transform.position, hit.point,Color.black,5f);
+                Debug.Log("Ray Shot");
+                Debug.Log(hit.transform.name);
             }
         }
         
