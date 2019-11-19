@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
             //Camera.main.transform.Translate(new Vector3(xAxisValue, zAxisValue, 0.0f));
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -35,9 +35,27 @@ public class CameraController : MonoBehaviour
                 Debug.DrawLine(Camera.main.transform.position, hit.point,Color.black,5f);
                 Debug.Log("Ray Shot");
                 Debug.Log(hit.transform.name);
-                courserTarget.position = hit.point;
+
+                if(hit.transform.tag != "Button")
+                {
+                    courserTarget.position = hit.point;
+                } 
             }
         }
-        
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 1000f))
+            {
+                Debug.DrawLine(Camera.main.transform.position, hit.point, Color.black, 5f);
+                Debug.Log("Ray Shot");
+                Debug.Log(hit.transform.name);
+
+            }
+        }
+
     }
 }
