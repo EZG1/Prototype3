@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public GameObject cameraHolder;
+    public Transform courserTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,8 @@ public class CameraController : MonoBehaviour
         float zAxisValue = Input.GetAxis("Vertical");
         if (Camera.main != null)
         {
-            Camera.main.transform.Translate(new Vector3(xAxisValue, zAxisValue, 0.0f));
+            cameraHolder.transform.Translate(new Vector3(xAxisValue, zAxisValue, 0.0f));
+            //Camera.main.transform.Translate(new Vector3(xAxisValue, zAxisValue, 0.0f));
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -31,6 +35,7 @@ public class CameraController : MonoBehaviour
                 Debug.DrawLine(Camera.main.transform.position, hit.point,Color.black,5f);
                 Debug.Log("Ray Shot");
                 Debug.Log(hit.transform.name);
+                courserTarget.position = hit.point;
             }
         }
         

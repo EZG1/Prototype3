@@ -10,14 +10,19 @@ public class UnitMovement : MonoBehaviour
 
     public Transform moveToLocation;
 
+    Camera mainCamera;
+    
+
     void Start()
     {
+        mainCamera = Camera.main;
         navAgent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        moveToLocation = mainCamera.GetComponent<CameraController>().courserTarget;
         navAgent.SetDestination(moveToLocation.transform.position);
     }
 }
