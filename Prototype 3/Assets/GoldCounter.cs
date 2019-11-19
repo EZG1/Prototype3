@@ -9,7 +9,7 @@ public class GoldCounter : MonoBehaviour
     float secondsToCovert = 0.0f;
     public int seconds;
     public Text goldCounter;
-    int currentGold = 0;
+    public int currentGold = 0;
     public int timeToAddGold = 1;
 
     // Start is called before the first frame update

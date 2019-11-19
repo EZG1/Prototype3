@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
     public GameObject cameraHolder;
     public Transform courserTarget;
 
+    public GameObject Barack;
+    public GameObject goldCounterObject;
+
+    private bool placingBarack = false;
+
+    public Button placeBaracksButton;
+    public ColorBlock buttonColor;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        buttonColor = placeBaracksButton.colors;
     } 
    
     // Update is called once per frame
@@ -53,9 +63,36 @@ public class CameraController : MonoBehaviour
                 Debug.DrawLine(Camera.main.transform.position, hit.point, Color.black, 5f);
                 Debug.Log("Ray Shot");
                 Debug.Log(hit.transform.name);
-
+             
+                if(placingBarack == true & goldCounterObject.GetComponent<GoldCounter>().currentGold > 9)
+                {
+                    Instantiate(Barack, hit.point, Quaternion.identity);
+                    goldCounterObject.GetComponent<GoldCounter>().currentGold -= 10;
+                    placingBarack = false;
+                }
             }
+            
         }
+        buttonColor.normalColor = Color.red;
+
+        if (placingBarack == true)
+        {
+            buttonColor.normalColor = Color.red;
+        }
+       /* else
+        {
+            buttonColor.normalColor = Color.white;
+        } */
 
     }
+
+    public void PlaceingBarack()
+    {
+        if(goldCounterObject.GetComponent<GoldCounter>().currentGold > 9)
+        {
+            placingBarack = !placingBarack;
+            print("Placeing baracks");
+        }
+    }
+
 }
