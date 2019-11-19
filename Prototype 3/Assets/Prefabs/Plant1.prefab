@@ -138,9 +138,10 @@ GameObject:
   - component: {fileID: 454453654921714376}
   - component: {fileID: 454453654921714377}
   - component: {fileID: 454453654921714382}
+  - component: {fileID: 3948689222565445213}
   m_Layer: 0
   m_Name: PlantShape
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,3 +256,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveToLocation: {fileID: 0}
   target: {fileID: 454453654234547422}
+--- !u!114 &3948689222565445213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454453654921714380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8bcfb6e41c593747b3ba56c95870942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

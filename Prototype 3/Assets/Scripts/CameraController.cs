@@ -14,13 +14,11 @@ public class CameraController : MonoBehaviour
     private bool placingBarack = false;
 
     public Button placeBaracksButton;
-    public ColorBlock buttonColor;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        buttonColor = placeBaracksButton.colors;
     } 
    
     // Update is called once per frame
@@ -71,19 +69,7 @@ public class CameraController : MonoBehaviour
                     placingBarack = false;
                 }
             }
-            
         }
-        buttonColor.normalColor = Color.red;
-
-        if (placingBarack == true)
-        {
-            buttonColor.normalColor = Color.red;
-        }
-       /* else
-        {
-            buttonColor.normalColor = Color.white;
-        } */
-
     }
 
     public void PlaceingBarack()
