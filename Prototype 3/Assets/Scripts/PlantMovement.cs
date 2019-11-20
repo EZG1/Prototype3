@@ -61,9 +61,14 @@ public class PlantMovement : MonoBehaviour
             if(plantHealt == 0)
             {
                 this.gameObject.tag = "Untagged";
-                Destroy(this.gameObject, 2f);
+                Destroy(this.gameObject);
             }
 
-        }      
+        }     
+        else if (Box.tag == "EntPoint")
+        {
+            Camera.main.GetComponent<FindUnitTarget>().baseDamaged();
+            Destroy(this.gameObject);
+        }
     }
 }

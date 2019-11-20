@@ -9,6 +9,7 @@ TagManager:
   - Plant
   - Bullet
   - SpawnLocation
+  - EntPoint
   layers:
   - Default
   - TransparentFX
