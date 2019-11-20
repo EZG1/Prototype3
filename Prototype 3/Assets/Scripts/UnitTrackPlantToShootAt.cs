@@ -29,6 +29,10 @@ public class UnitTrackPlantToShootAt : MonoBehaviour
     void Update()
     {
         
+        if(targetPlant == null)
+        {
+            foundTarget = false;
+        }
 
 
         if (foundTarget == true)

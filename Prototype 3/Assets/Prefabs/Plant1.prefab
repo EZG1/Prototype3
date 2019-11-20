@@ -238,7 +238,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.49
+  m_Radius: 1.11
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -268,3 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bcfb6e41c593747b3ba56c95870942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPlant: {fileID: 0}
+  foundTarget: 0
+  endOfGun: {fileID: 0}
+  unitGunRigiddody: {fileID: 0}

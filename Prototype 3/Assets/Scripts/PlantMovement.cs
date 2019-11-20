@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class PlantMovement : MonoBehaviour
 {
-
+    int plantHealt = 4;
+    
     private NavMeshAgent navAgent;
 
     public Transform moveToLocation;
@@ -47,9 +48,22 @@ public class PlantMovement : MonoBehaviour
         if (Box.tag == "Checkpoint")
         {
             // moveToLocation = Find
-            print(Box.name);
+            //print(Box.name);
             moveToLocation = Box.GetComponent<CornerDirections>().NextLocation;
             setTagetPosition();
         }
+        else if(Box.tag == "Bullet")
+        {
+            Box.GetComponent<DestroyBullet>().BulletHitPlant();
+            plantHealt -= 1;
+            print(plantHealt);
+
+            if(plantHealt == 0)
+            {
+                this.gameObject.tag = "Untagged";
+                Destroy(this.gameObject, 2f);
+            }
+
+        }      
     }
 }

@@ -33,8 +33,12 @@ public class UnitLookForTarget : MonoBehaviour
             {
                 for (int i = 0; i < plantTargets.Length; i++)
                 {
-
-                    if (Vector3.Distance(this.transform.position, plantTargets[i].transform.position) < Mathf.Round(x))
+                    if (plantTargets[i] == null)
+                    {
+                        plantTargets = Camera.main.GetComponent<FindUnitTarget>().plantsToKill;
+                        return;
+                    }
+                    else if (Vector3.Distance(this.transform.position, plantTargets[i].transform.position) < Mathf.Round(x))
                     {
                         target = plantTargets[i];
                         print(target.name);
@@ -43,9 +47,8 @@ public class UnitLookForTarget : MonoBehaviour
                         this.gameObject.GetComponent<UnitTrackPlantToShootAt>().foundTarget = true;
                         return;
                     }
-                    print(i);
+                    //print(i);
                 }
-                print(x);
             }
             target = null;
             this.gameObject.GetComponent<UnitTrackPlantToShootAt>().foundTarget = false;

@@ -247,10 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bcfb6e41c593747b3ba56c95870942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimSpeed: 40
   targetPlant: {fileID: 0}
   foundTarget: 0
-  bullet: {fileID: 8290547700864992393, guid: 890dff3360711014db02799142f79a07, type: 3}
   endOfGun: {fileID: 3671034429843655257}
   unitGunRigiddody: {fileID: 7565606833983418823, guid: 890dff3360711014db02799142f79a07,
     type: 3}

@@ -8,12 +8,16 @@ public class CameraController : MonoBehaviour
     public GameObject cameraHolder;
     public Transform courserTarget;
 
-    public GameObject Barack;
+    public GameObject unit;
+    public GameObject barack;
+    bool baracksPlaced = false;
+    public GameObject instantiatedBarack;
+
     public GameObject goldCounterObject;
 
-    private bool placingBarack = false;
+    bool placingBarack = false;
 
-    public Button placeBaracksButton;
+    //public Button placeBaracksButton;
 
 
     // Start is called before the first frame update
@@ -62,11 +66,14 @@ public class CameraController : MonoBehaviour
                 Debug.Log("Ray Shot");
                 Debug.Log(hit.transform.name);
              
-                if(placingBarack == true & goldCounterObject.GetComponent<GoldCounter>().currentGold > 9)
+                if(placingBarack == true & goldCounterObject.GetComponent<GoldCounter>().currentGold > 9 & baracksPlaced == false)
                 {
-                    Instantiate(Barack, hit.point, Quaternion.identity);
+                    GameObject newBarrack;
+                    newBarrack = Instantiate(barack, hit.point, Quaternion.identity) as GameObject;
                     goldCounterObject.GetComponent<GoldCounter>().currentGold -= 10;
+                    instantiatedBarack = newBarrack;
                     placingBarack = false;
+                    baracksPlaced = true;
                 }
             }
         }
@@ -81,4 +88,15 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void createUnit()
+    {
+        if(baracksPlaced == true)
+        {
+            Transform spawnLocation = instantiatedBarack.GetComponent<Barracks>().spawnLocation;
+            //Transform placementSpot = instantiatedBarack.GetComponent<Barracks>().spawnLocation;
+            Instantiate(unit, spawnLocation);
+        }
+    }
+    //instantiatedBarack.GetComponent<Barracks>().spawnLocation.position, 
+    //instantiatedBarack.GetComponent<Barracks>().spawnLocation.rotation);
 }

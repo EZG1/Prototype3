@@ -7,6 +7,8 @@ TagManager:
   - Checkpoint
   - Button
   - Plant
+  - Bullet
+  - SpawnLocation
   layers:
   - Default
   - TransparentFX
