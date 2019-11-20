@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitTrackPlantToShootAt : MonoBehaviour
 {
+
+    public AudioClip gunSound;
+
     float aimSpeed = 100;
     public GameObject targetPlant;
     Quaternion lookAtRotation;
@@ -43,6 +46,8 @@ public class UnitTrackPlantToShootAt : MonoBehaviour
             if (timeToShoot < this.gameObject.GetComponent<UnitLookForTarget>().secondsToCovert)
             {
                 timeToShoot = this.gameObject.GetComponent<UnitLookForTarget>().secondsToCovert + timeBetweenShots;
+
+                GetComponent<AudioSource>().PlayOneShot(gunSound);
 
                 Rigidbody newBullet;
                 newBullet = Instantiate(unitGunRigiddody, endOfGun.position, endOfGun.rotation) as Rigidbody;

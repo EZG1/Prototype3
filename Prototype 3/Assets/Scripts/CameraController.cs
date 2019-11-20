@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    private AudioSource buttonsSpeaker;
+    public AudioClip buildingBarracks;
+    public AudioClip buildingUnit;
+
     public GameObject cameraHolder;
     public Transform courserTarget;
 
@@ -17,8 +21,10 @@ public class CameraController : MonoBehaviour
 
     bool placingBarack = false;
 
-    //public Button placeBaracksButton;
-
+    void Awake()
+    {
+        buttonsSpeaker = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +80,7 @@ public class CameraController : MonoBehaviour
                     instantiatedBarack = newBarrack;
                     placingBarack = false;
                     baracksPlaced = true;
+                    buttonsSpeaker.PlayOneShot(buildingBarracks);
                 }
             }
         }
@@ -83,20 +90,29 @@ public class CameraController : MonoBehaviour
     {
         if(goldCounterObject.GetComponent<GoldCounter>().currentGold > 9)
         {
+            buttonsSpeaker.PlayOneShot(buildingBarracks);
             placingBarack = !placingBarack;
             print("Placeing baracks");
+            
         }
     }
 
     public void createUnit()
     {
-        if(baracksPlaced == true)
+        if(baracksPlaced == true & goldCounterObject.GetComponent<GoldCounter>().currentGold > 4)
         {
-            Transform spawnLocation = instantiatedBarack.GetComponent<Barracks>().spawnLocation;
-            //Transform placementSpot = instantiatedBarack.GetComponent<Barracks>().spawnLocation;
-            Instantiate(unit, spawnLocation);
+            buttonsSpeaker.PlayOneShot(buildingUnit);
+            goldCounterObject.GetComponent<GoldCounter>().currentGold -= 5;
+            //create unit after delay
+            StartCoroutine(waitTime());
         }
     }
-    //instantiatedBarack.GetComponent<Barracks>().spawnLocation.position, 
-    //instantiatedBarack.GetComponent<Barracks>().spawnLocation.rotation);
+
+    IEnumerator waitTime()
+    {
+        yield return new WaitForSeconds(3);
+        Transform spawnLocation = instantiatedBarack.GetComponent<Barracks>().spawnLocation;
+        Instantiate(unit, spawnLocation);
+    }
+
 }
