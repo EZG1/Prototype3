@@ -11,7 +11,9 @@ public class UnitMovement : MonoBehaviour
     public Transform moveToLocation;
 
     Camera mainCamera;
-    
+
+    public AudioClip walking;
+
 
     void Start()
     {
@@ -24,5 +26,7 @@ public class UnitMovement : MonoBehaviour
     {
         moveToLocation = mainCamera.GetComponent<CameraController>().courserTarget;
         navAgent.SetDestination(moveToLocation.transform.position);
+
+        //GetComponent<AudioSource>().PlayOneShot(walking);
     }
 }

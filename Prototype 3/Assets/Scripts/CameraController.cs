@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     private AudioSource buttonsSpeaker;
     public AudioClip buildingBarracks;
     public AudioClip buildingUnit;
+    public AudioClip UnitBuilt;
+
 
     public GameObject cameraHolder;
     public Transform courserTarget;
@@ -113,6 +115,7 @@ public class CameraController : MonoBehaviour
         yield return new WaitForSeconds(3);
         Transform spawnLocation = instantiatedBarack.GetComponent<Barracks>().spawnLocation;
         Instantiate(unit, spawnLocation);
+        buttonsSpeaker.PlayOneShot(UnitBuilt);
     }
 
 }

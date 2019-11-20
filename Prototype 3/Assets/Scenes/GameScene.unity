@@ -3167,7 +3167,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f49303bf76a073d42a70e07bb6dc42ec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3589b42cd9c6a2a438760491199495e9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7582,6 +7582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingBarracks: {fileID: 8300000, guid: d50c168d0bf226744837749da5b30409, type: 3}
   buildingUnit: {fileID: 8300000, guid: 57e717cf63aac754b9e42034153e83ae, type: 3}
+  UnitBuilt: {fileID: 8300000, guid: c9c4eeeb5bef4a34b994aa4c4ff1357e, type: 3}
   cameraHolder: {fileID: 765913129}
   courserTarget: {fileID: 2133123434}
   unit: {fileID: 7482042812961597778, guid: 23ce9ccb3e8059e4faec1e9e9950d3a2, type: 3}
