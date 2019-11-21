@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class PlantMovement : MonoBehaviour
 {
+    //bullet plants take to be destroyed
     int plantHealt = 4;
     
     private NavMeshAgent navAgent;
@@ -37,14 +38,16 @@ public class PlantMovement : MonoBehaviour
     }
 
 
-    //choose a random location to run to.
+    //choose a random location to run to at corner location.
     public void setTagetPosition()
     {
         target.position = moveToLocation.position + new Vector3(Random.Range(-2, 2), 0, Random.Range(-2,2));
     }
 
+    //call correct function on collion 
     private void OnTriggerEnter(Collider Box)
     {
+        //call new checkpoint 
         if (Box.tag == "Checkpoint")
         {
             // moveToLocation = Find
@@ -52,7 +55,8 @@ public class PlantMovement : MonoBehaviour
             moveToLocation = Box.GetComponent<CornerDirections>().NextLocation;
             setTagetPosition();
         }
-        else if(Box.tag == "Bullet")
+        //trigger bullet collision
+        else if (Box.tag == "Bullet")
         {
             Box.GetComponent<DestroyBullet>().BulletHitPlant();
             plantHealt -= 1;
@@ -65,6 +69,7 @@ public class PlantMovement : MonoBehaviour
             }
 
         }     
+        //trigger base DM taken
         else if (Box.tag == "EntPoint")
         {
             Camera.main.GetComponent<FindUnitTarget>().baseDamaged();

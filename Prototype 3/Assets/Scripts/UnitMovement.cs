@@ -8,6 +8,7 @@ public class UnitMovement : MonoBehaviour
 
     private NavMeshAgent navAgent;
 
+    //target to move unit to
     public Transform moveToLocation;
 
     Camera mainCamera;
@@ -24,6 +25,7 @@ public class UnitMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //grab current distination to walk to from mouse click script
         moveToLocation = mainCamera.GetComponent<CameraController>().courserTarget;
         navAgent.SetDestination(moveToLocation.transform.position);
 

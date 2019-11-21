@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UnitLookForTarget : MonoBehaviour
 {
+    //time float + int
     public float secondsToCovert = 0.0f;
     public int seconds;
 
@@ -11,6 +12,7 @@ public class UnitLookForTarget : MonoBehaviour
     public GameObject target;
     int timeToFindTarget = 0;
 
+    //distance to check 
     int distanceBetweenObjects = 20;
  
     void Start()
@@ -22,22 +24,28 @@ public class UnitLookForTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //track seconds
         secondsToCovert = Time.realtimeSinceStartup;
         seconds = Mathf.FloorToInt(secondsToCovert);
 
+        //call each second
         if (timeToFindTarget < seconds)
         {
             timeToFindTarget = seconds + 1;
 
+            //check for closest plant to unit at each distance, 1,2,3 ect up to distance variable 
             for (int x = 0; x < distanceBetweenObjects; x++)
             {
+                //check each plant in list
                 for (int i = 0; i < plantTargets.Length; i++)
                 {
+                    //if plant is missing exit
                     if (plantTargets[i] == null)
                     {
                         plantTargets = Camera.main.GetComponent<FindUnitTarget>().plantsToKill;
                         return;
                     }
+                    //if target matches range set as target and exit loop
                     else if (Vector3.Distance(this.transform.position, plantTargets[i].transform.position) < Mathf.Round(x))
                     {
                         target = plantTargets[i];
@@ -50,6 +58,7 @@ public class UnitLookForTarget : MonoBehaviour
                     //print(i);
                 }
             }
+            //if no target is found remove current target
             target = null;
             this.gameObject.GetComponent<UnitTrackPlantToShootAt>().foundTarget = false;
         }

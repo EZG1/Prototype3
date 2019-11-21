@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    //sound assets and speaker
     private AudioSource buttonsSpeaker;
     public AudioClip buildingBarracks;
     public AudioClip buildingUnit;
     public AudioClip UnitBuilt;
-
-
+    
     public GameObject cameraHolder;
+
+    //target for units to move too.
     public Transform courserTarget;
 
+    //objects to create
     public GameObject unit;
     public GameObject barack;
+
+    //bool for disabling barrack placemet
     bool baracksPlaced = false;
     public GameObject instantiatedBarack;
 
@@ -53,8 +58,8 @@ public class CameraController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000f))
             {
                 Debug.DrawLine(Camera.main.transform.position, hit.point,Color.black,5f);
-                Debug.Log("Ray Shot");
-                Debug.Log(hit.transform.name);
+                //Debug.Log("Ray Shot");
+                //Debug.Log(hit.transform.name);
 
                 if(hit.transform.tag != "Button")
                 {
@@ -71,9 +76,10 @@ public class CameraController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 1000f))
             {
                 Debug.DrawLine(Camera.main.transform.position, hit.point, Color.black, 5f);
-                Debug.Log("Ray Shot");
-                Debug.Log(hit.transform.name);
+                //Debug.Log("Ray Shot");
+                //Debug.Log(hit.transform.name);
              
+                //create barracks if button and gold are correct, then adjust components acordingly
                 if(placingBarack == true & goldCounterObject.GetComponent<GoldCounter>().currentGold > 9 & baracksPlaced == false)
                 {
                     GameObject newBarrack;
@@ -88,6 +94,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //enable barrack placement
     public void PlaceingBarack()
     {
         if(goldCounterObject.GetComponent<GoldCounter>().currentGold > 9)
@@ -99,6 +106,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //buid unit if barracks is made
     public void createUnit()
     {
         if(baracksPlaced == true & goldCounterObject.GetComponent<GoldCounter>().currentGold > 4)
@@ -110,6 +118,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //dellay trigger for unit placement to allow for sound
     IEnumerator waitTime()
     {
         yield return new WaitForSeconds(3);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Barracks : MonoBehaviour
 {
+    //name next target location after corner
     public Transform spawnLocation;
 
     // Start is called before the first frame update
